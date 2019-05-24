@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    #certmanager.k8s.io/cluster-issuer: letsencrypt-staging
+    #kubernetes.io/tls-acme: “true”
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: nginx
+  name: omegnet-ingress
+  namespace: apps
+spec:
+  rules:
+  - host: jenkins.omegnet.com
+    http:
+      paths:
+      - backend:
+          serviceName: jenkins-service
+          servicePort: 8080
+  #tls:
+  #- hosts:
+  #  - jenkins.omegnet.com
+  #  secretName: tls-staging-cert
