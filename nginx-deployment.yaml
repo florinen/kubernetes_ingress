@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
@@ -17,6 +17,7 @@ spec:
         ports:
         - name: http
           containerPort: 80
+        resources: {}
 
 ---
 apiVersion: v1
